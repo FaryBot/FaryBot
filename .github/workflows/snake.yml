@@ -1,0 +1,35 @@
+# Draws a snake that eats the squares of my REAL contribution graph.
+# Runs every night, after every push to main, and when I click "Run workflow".
+name: generate snake
+
+on:
+  schedule:
+    - cron: "0 0 * * *"      # every day at 00:00 UTC
+  workflow_dispatch:          # adds a "Run workflow" button in the Actions tab
+  push:
+    branches: [main]
+
+permissions:
+  contents: write             # allowed to push the pictures to the "output" branch
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # 1. read my contribution graph and draw two snake pictures in my colours
+      #    color_dots = 5 colours: no contributions -> most contributions
+      - uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-light.svg?palette=github-light&color_snake=#9b74cf&color_dots=#f3ecfb,#e1cff7,#c9a7e8,#a988d8,#7454a8
+            dist/snake-dark.svg?palette=github-dark&color_snake=#f7a8c8&color_dots=#2a2140,#4a3570,#7454a8,#a988d8,#efe4ff
+
+      # 2. put the pictures on a separate branch called "output"
+      - uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
