@@ -81,12 +81,11 @@
 
 | | |
 | --- | --- |
-| 🎮 **games** | Wuthering Waves · Baldur's Gate 3 · Stardew Valley · Animal Crossing · Tomodachi Life |
+| 🎮 **games** | Wuthering Waves · Baldur's Gate 3 · Stardew Valley · Animal Crossing |
 | 📺 **anime** (fantasy forever) | Frieren · Delicious in Dungeon · Witch Hat Atelier |
 | 🎨 **art** | pixel art, my newest obsession |
 | 🍜 **cooking** | food from all over the world |
 | 🧠 **psychology** | especially behavioural psychology |
-| | |
 
 
 <div align="center">
